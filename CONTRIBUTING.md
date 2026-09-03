@@ -1,40 +1,140 @@
-# Adding your project's docs
+# Contributing
 
-`main` is protected — nobody pushes to it directly, everything lands through
-a pull request. To get your project listed:
+KraftOS is the docs hub for every KernelKraftVITC project. Each project
+lives here as a **git submodule** and owns a `docs/` folder — this repo just
+stitches everyone's `docs/` together into one site and deploys it.
 
-1. **Fork this repo** (or branch it directly if you have write access).
+**`main` is protected.** Nobody — including maintainers — can push to it
+directly. Every change, including adding a new project, goes through a pull
+request from a branch.
 
-2. **Add your repo as a submodule**, tracking the branch you want synced:
+If this is your first time touching this repo, follow the steps below in
+order. None of it assumes you've done this before.
 
-   ```sh
-   git submodule add -b main <your-repo-url> projects/<your-project-name>
-   ```
+## 0. Prerequisites
 
-   Use whatever your default branch is instead of `main` if it differs —
-   the weekly sync follows this branch, not a pinned commit.
+You need on your machine:
 
-3. **Make sure your repo has a `docs/` folder** with markdown in it. See
-   [Writing docs](writing-docs.md) for the syntax available. `docs/index.md`
-   becomes your project's landing page.
+- `git`
+- Python 3.10+ and `pip`
+- Write access to the `KernelKraftVITC/KraftOS` repo (ask a maintainer to
+  add you as a collaborator if you don't have it — if you're an outside
+  contributor without access, fork the repo instead and open the PR from
+  your fork; everything else below is the same)
 
-4. **Preview it locally**:
+## 1. Clone the repo
 
-   ```sh
-   pip install -r requirements.txt
-   ./scripts/sync-docs.sh
-   mkdocs serve
-   ```
+```sh
+git clone https://github.com/KernelKraftVITC/KraftOS.git
+cd KraftOS
+```
 
-   Check your pages under `sources/<your-project-name>/` at
-   `http://127.0.0.1:8000`.
+You don't need `--recurse-submodules` just to add a new project, but if you
+want to see the existing ones' docs while you work, use:
 
-5. **Commit and push.** You're committing `.gitmodules` and the submodule's
-   pinned commit — not the docs content itself, and not `docs/sources/`
-   (that's generated, and gitignored).
+```sh
+git submodule update --init --recursive
+```
 
-6. **Open a PR against `main`.** Once merged:
-   - the next push rebuilds and deploys the site immediately
-   - after that, the weekly cron keeps pulling your submodule's `main` HEAD
-     automatically — you don't need to open a PR again just to publish new
-     doc changes, only to add/remove a project or bump the pin manually
+## 2. Pick a name for your project
+
+Your project's folder name under `projects/` becomes:
+
+- the URL path its docs live at (`/sources/<name>/...`)
+- the section label shown in the site's navigation
+
+So pick something short and recognizable — **lowercase, hyphen-separated**,
+matching your actual repo name where possible. E.g. a repo called
+`Kraft-Bootloader` should be added as `projects/kraft-bootloader`, not
+`projects/KraftBootloader` or `projects/Kraft_Bootloader`.
+
+## 3. Create a branch
+
+Never work on `main` — you can't push it anyway. Branch off first:
+
+```sh
+git checkout -b add-<your-project-name>
+```
+
+Example: `git checkout -b add-kraft-bootloader`.
+
+## 4. Add your repo as a submodule
+
+```sh
+git submodule add -b main <your-repo-url> projects/<your-project-name>
+```
+
+Replace `main` with your repo's actual default branch if it isn't `main`
+(check on GitHub if unsure). This `-b` matters — it's what tells the weekly
+sync which branch to follow. Without it, the sync may not track the branch
+you expect.
+
+This stages two things: `.gitmodules` (updated with your project's URL and
+branch) and a new entry `projects/<your-project-name>` pointing at your
+repo's current commit. That's all this repo actually stores about your
+project — not your files, just a pointer to them.
+
+## 5. Make sure your repo has a `docs/` folder
+
+That's the only requirement on your project's side. Inside it:
+
+- `docs/index.md` — becomes your project's landing page
+- any other `.md` files, in subfolders if you like — see
+  [Writing docs](docs/writing-docs.md) for syntax, images, and structure
+
+If you don't have this yet, add it in your own repo, commit, and push there
+first — then come back here.
+
+## 6. Preview the whole site locally
+
+From the KraftOS root:
+
+```sh
+pip install -r requirements.txt
+./scripts/sync-docs.sh
+mkdocs serve
+```
+
+Open `http://127.0.0.1:8000` and check your project shows up correctly
+under its section in the nav. `Ctrl+C` to stop the server when you're done.
+
+Re-run `./scripts/sync-docs.sh` any time you pull new commits into your
+submodule and want to preview them.
+
+## 7. Commit and push your branch
+
+```sh
+git add .gitmodules projects/<your-project-name>
+git commit -m "Add <your-project-name> docs"
+git push origin add-<your-project-name>
+```
+
+Do **not** run `git push origin main` — it will be rejected, and you don't
+want it to succeed anyway (nobody's changes should land on `main` without
+review).
+
+## 8. Open a pull request
+
+```sh
+gh pr create --base main --title "Add <your-project-name> docs"
+```
+
+or open one from the GitHub UI — GitHub will offer a "Compare & pull
+request" button on your branch automatically. Target `main`.
+
+A maintainer reviews and merges it. As soon as it's merged:
+
+- the merge itself triggers an immediate rebuild + redeploy
+- from then on, the weekly cron job pulls whatever's newest on your
+  submodule's tracked branch automatically — you generally don't need to
+  open another PR here just because you edited a doc page in your own repo
+
+If you've pushed a doc fix and don't want to wait for the weekly sync, ask a
+maintainer to trigger the `Docs` workflow manually from the **Actions** tab
+(`Run workflow`) — that pulls latest and redeploys on demand.
+
+## Removing or renaming a project
+
+Same flow: branch, `git submodule deinit -f projects/<name>` +
+`git rm projects/<name>` (or edit `.gitmodules`/re-run `submodule add` for a
+rename), commit, push the branch, open a PR.
