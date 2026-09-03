@@ -4,5 +4,5 @@
 	branch = main
 [submodule "projects/kraft-process-scheduling"]
 	path = projects/kraft-process-scheduling
-	url = https://github.com/Krishdeep13/kraft-process-scheduling.git
+	url = https://github.com/KernelKraftVITC/kraft-process-scheduling.git
 	branch = main
