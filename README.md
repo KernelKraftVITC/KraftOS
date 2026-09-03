@@ -18,12 +18,8 @@ by hand.
 
 ## Add a project
 
-```sh
-git submodule add <repo-url> projects/<name>
-```
-
-The project needs a `docs/` folder with markdown in it. Nothing else to wire
-up — the next build (or `./scripts/sync-docs.sh` locally) picks it up.
+See [CONTRIBUTING.md](CONTRIBUTING.md) — it's a PR-based workflow, since
+`main` is protected.
 
 ## Local preview
 
