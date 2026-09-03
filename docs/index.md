@@ -2,5 +2,5 @@
 
 Documentation aggregated from every project submodule's `docs/` directory.
 
-Add a project: `git submodule add <repo-url> projects/<name>`, give it a `docs/`
-folder, then run `./scripts/sync-docs.sh` to link it in.
+- [Writing docs](writing-docs.md) — markdown syntax and extensions available
+- [Adding your project](https://github.com/KernelKraftVITC/KraftOS/blob/main/CONTRIBUTING.md) — PR workflow to get your project's docs listed here

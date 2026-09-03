@@ -7,7 +7,9 @@ cd "$(git rev-parse --show-toplevel)"
 rm -rf docs/sources
 mkdir -p docs/sources
 
-git config --file .gitmodules --get-regexp path 2>/dev/null | while read -r _ path; do
+[ -f .gitmodules ] || exit 0
+
+(git config --file .gitmodules --get-regexp path 2>/dev/null || true) | while read -r _ path; do
   if [ -d "$path/docs" ]; then
     name="$(basename "$path")"
     ln -sfn "../../$path/docs" "docs/sources/$name"

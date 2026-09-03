@@ -1,0 +1,4 @@
+[submodule "projects/docs-test-module"]
+	path = projects/docs-test-module
+	url = https://github.com/KernelKraftVITC/docs-test-module.git
+	branch = main
