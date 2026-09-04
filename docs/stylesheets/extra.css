@@ -1,0 +1,55 @@
+/* KraftOS brand: copper/amber accent on charcoal — a forge, not a generic indigo SaaS site. */
+
+[data-md-color-scheme="default"][data-md-color-primary="custom"] {
+  --md-primary-fg-color: #3a3630;
+  --md-primary-fg-color--light: #57524a;
+  --md-primary-fg-color--dark: #262319;
+  --md-primary-bg-color: #f6f1ea;
+}
+
+[data-md-color-scheme="slate"][data-md-color-primary="custom"] {
+  --md-primary-fg-color: #1c1a17;
+  --md-primary-fg-color--light: #3a3630;
+  --md-primary-fg-color--dark: #131210;
+  --md-default-bg-color: #16140f;
+}
+
+[data-md-color-accent="custom"] {
+  --md-accent-fg-color: #c9722c;
+  --md-accent-fg-color--transparent: #c9722c1a;
+  --md-accent-bg-color: #fff;
+  --md-accent-bg-color--light: #ffffffb3;
+}
+
+[data-md-color-scheme="slate"] .md-typeset a {
+  color: #e08a3e;
+}
+
+.md-typeset h1,
+.md-typeset h2 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* Frontmatter byline (author/updated), injected by overrides/main.html above the page body */
+.kraft-byline {
+  display: flex;
+  gap: 0.75em;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--md-default-fg-color--light);
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  padding-bottom: 0.6em;
+  margin-bottom: 1.2em;
+}
+
+.kraft-byline-author::before {
+  content: "Written by ";
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.kraft-byline-date::before {
+  content: "· ";
+}

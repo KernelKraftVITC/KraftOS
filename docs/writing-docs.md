@@ -1,3 +1,8 @@
+---
+author: KraftOS maintainers
+updated: 2026-09-04
+---
+
 # Writing docs
 
 Your project's `docs/` folder gets symlinked straight into this site at
@@ -7,7 +12,26 @@ side beyond writing markdown.
 
 New here? See [Contributing](https://github.com/KernelKraftVITC/KraftOS/blob/pages/CONTRIBUTING.md)
 first for how to get your project added in the first place — this page is
-about what goes *inside* your `docs/` folder once it's wired up.
+about what goes *inside* your `docs/` folder once it's wired up. For tone
+and formatting conventions, see the [style guide](style-guide.md) — this
+page is mechanics, that one is voice.
+
+## Frontmatter (required)
+
+Every page — including `docs/index.md` — starts with a YAML block:
+
+```md
+---
+author: Your Name
+updated: 2026-09-04
+---
+
+# Page Title
+```
+
+`author` and `updated` render as a byline above your content automatically.
+Don't restate them in your prose. See the
+[style guide](style-guide.md#frontmatter-required) for the exact rules.
 
 ## Folder structure
 

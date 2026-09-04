@@ -20,9 +20,12 @@ through a pull request. To get your module's docs listed on the site:
    Use whatever your default branch is instead of `main` if it differs —
    the weekly sync follows this branch, not a pinned commit.
 
-3. **Make sure your repo has a `docs/` folder** with markdown in it. See
-   [Writing docs](docs/writing-docs.md) for the syntax available. `docs/index.md`
-   becomes your project's landing page.
+3. **Make sure your repo has a `docs/` folder** with markdown in it.
+   `docs/index.md` becomes your project's landing page. Every page needs a
+   YAML frontmatter block (`author`, `updated`) — see
+   [Writing docs](docs/writing-docs.md) for the mechanics and the
+   [style guide](docs/style-guide.md) for tone/formatting. Docs that don't
+   follow it will get sent back in review, not silently fixed.
 
 4. **Preview it locally**:
 

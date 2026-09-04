@@ -1,4 +1,6 @@
 nav:
   - index.md
+  - roadmap.md
   - Modules: sources
   - writing-docs.md
+  - style-guide.md

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% if page.meta and (page.meta.author or page.meta.updated) %}
+  <div class="kraft-byline">
+    {% if page.meta.author %}<span class="kraft-byline-author">{{ page.meta.author }}</span>{% endif %}
+    {% if page.meta.updated %}<span class="kraft-byline-date">{{ page.meta.updated }}</span>{% endif %}
+  </div>
+  {% endif %}
+  {{ super() }}
+{% endblock %}
