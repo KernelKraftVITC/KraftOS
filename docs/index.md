@@ -1,5 +1,5 @@
 ---
-author: KraftOS maintainers
+author: parrothacker1
 updated: 2026-09-04
 ---
 

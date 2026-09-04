@@ -66,3 +66,6 @@ plugins:
 
 extra_css:
   - stylesheets/extra.css
+
+extra:
+  generator: false
