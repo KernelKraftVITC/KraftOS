@@ -1,0 +1,39 @@
+{
+  "module": "kraft-process-scheduling",
+  "code": "M4",
+  "title": "Process & Scheduling",
+  "owner": "Krishdeep13",
+  "repo": "https://github.com/KernelKraftVITC/kraft-process-scheduling",
+  "tracked_branch": "main",
+  "language": "C/C++ (freestanding)",
+  "status": "spec-only — no kernel source yet",
+  "last_updated": "2026-09-04",
+  "description": "Introduce true multitasking: kernel threads, context switching, a scheduler, and the transition into unprivileged user mode.",
+  "depends_on": [
+    "M2"
+  ],
+  "blocks": [
+    "M5 (future)",
+    "M6 (future)"
+  ],
+  "sections": [
+    {
+      "id": "planned_submodules",
+      "title": "Planned Submodules",
+      "entries": [
+        {
+          "task": "Thread abstraction and context switch",
+          "status": "planned"
+        },
+        {
+          "task": "Round-robin scheduler",
+          "status": "planned"
+        },
+        {
+          "task": "Ring-3 user mode transition",
+          "status": "planned"
+        }
+      ]
+    }
+  ]
+}

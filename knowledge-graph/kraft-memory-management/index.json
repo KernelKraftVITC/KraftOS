@@ -1,0 +1,39 @@
+{
+  "module": "kraft-memory-management",
+  "code": "M2",
+  "title": "Memory Management",
+  "owner": "yashvini-chirri",
+  "repo": "https://github.com/KernelKraftVITC/kraft-memory-management",
+  "tracked_branch": "main",
+  "language": "C/C++ (freestanding)",
+  "status": "spec-only — no kernel source yet",
+  "last_updated": "2026-09-04",
+  "description": "Give the kernel the ability to manage physical and virtual memory. This is a prerequisite for processes, the module loader, and effectively everything that follows.",
+  "depends_on": [
+    "M1"
+  ],
+  "blocks": [
+    "M3",
+    "M4"
+  ],
+  "sections": [
+    {
+      "id": "planned_submodules",
+      "title": "Planned Submodules",
+      "entries": [
+        {
+          "task": "Physical frame allocator",
+          "status": "planned"
+        },
+        {
+          "task": "Paging / virtual memory (4-level, higher-half)",
+          "status": "planned"
+        },
+        {
+          "task": "Kernel heap allocator (kmalloc / kfree)",
+          "status": "planned"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "module": "kraft-kernel-module-loader",
+  "code": "M3",
+  "title": "Kernel Module Loader (LKM)",
+  "owner": "kumar-shaurya",
+  "repo": "https://github.com/KernelKraftVITC/kraft-kernel-module-loader",
+  "tracked_branch": "main",
+  "language": "C/C++ (freestanding)",
+  "status": "spec-only — no kernel source yet",
+  "last_updated": "2026-09-04",
+  "description": "A Linux-style dynamic module loading subsystem that parses relocatable kernel modules, resolves kernel symbols, and registers or unregisters them at runtime. This is what lets later subsystems such as the VFS and filesystems be developed and loaded independently of the process/scheduler track.",
+  "depends_on": [
+    "M2"
+  ],
+  "blocks": [
+    "M8 (future)"
+  ],
+  "sections": [
+    {
+      "id": "planned_submodules",
+      "title": "Planned Submodules",
+      "entries": [
+        {
+          "task": "Relocatable ELF (.ko-style) parsing",
+          "status": "planned"
+        },
+        {
+          "task": "Kernel symbol table and resolution",
+          "status": "planned"
+        },
+        {
+          "task": "Module register/init and cleanup API",
+          "status": "planned"
+        },
+        {
+          "task": "insmod / rmmod-style loading mechanism",
+          "status": "planned"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "module": "kraft-boot-bringup",
+  "code": "M1",
+  "title": "Boot & Bring-up",
+  "owner": "sanipaani",
+  "repo": "https://github.com/KernelKraftVITC/kraft-boot-bringup",
+  "tracked_branch": "main",
+  "language": "C/C++ (freestanding)",
+  "status": "spec-only — no kernel source yet",
+  "last_updated": "2026-09-04",
+  "description": "Take the machine from power-on to a running 64-bit kernel that can print to the screen and serial port, and react to a keypress. This is the foundation every other module depends on.",
+  "depends_on": [],
+  "blocks": [
+    "M2"
+  ],
+  "sections": [
+    {
+      "id": "planned_submodules",
+      "title": "Planned Submodules",
+      "entries": [
+        {
+          "task": "Toolchain and repository / build setup",
+          "status": "planned"
+        },
+        {
+          "task": "Boot via Limine into 64-bit long mode",
+          "status": "planned"
+        },
+        {
+          "task": "Framebuffer and serial output",
+          "status": "planned"
+        },
+        {
+          "task": "GDT and TSS",
+          "status": "planned"
+        },
+        {
+          "task": "IDT and exception handling",
+          "status": "planned"
+        },
+        {
+          "task": "PIC / APIC and timer interrupt",
+          "status": "planned"
+        },
+        {
+          "task": "Keyboard driver",
+          "status": "planned"
+        }
+      ]
+    }
+  ]
+}
