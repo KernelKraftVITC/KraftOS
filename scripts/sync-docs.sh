@@ -16,3 +16,14 @@ mkdir -p docs/sources
     echo "linked $path/docs -> docs/sources/$name"
   fi
 done
+
+# Module nav order follows the roadmap (M1-M4), not alphabetical.
+# ponytail: hardcoded list, add new module names here as they get staffed.
+cat > docs/sources/.pages <<'EOF'
+nav:
+  - kraft-boot-bringup
+  - kraft-memory-management
+  - kraft-kernel-module-loader
+  - kraft-process-scheduling
+  - ...
+EOF
