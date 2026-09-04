@@ -2,7 +2,7 @@ name: Docs
 
 on:
   schedule:
-    - cron: "0 6 * * 1" # weekly, Monday 06:00 UTC — re-syncs submodules and redeploys
+    - cron: "0 6 * * 2,5" # twice weekly, Tuesday + Friday 06:00 UTC — re-syncs submodules and redeploys
   workflow_dispatch:
   push:
     branches: [pages]
