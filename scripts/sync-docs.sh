@@ -17,13 +17,41 @@ mkdir -p docs/sources
   fi
 done
 
-# Module nav order follows the roadmap (M1-M4), not alphabetical.
+# Module order follows the roadmap (M1-M4), not alphabetical — shared by
+# the nav config and the landing page below.
 # ponytail: hardcoded list, add new module names here as they get staffed.
-cat > docs/sources/.pages <<'EOF'
-nav:
-  - kraft-boot-bringup
-  - kraft-memory-management
-  - kraft-kernel-module-loader
-  - kraft-process-scheduling
-  - ...
-EOF
+order=(kraft-boot-bringup kraft-memory-management kraft-kernel-module-loader kraft-process-scheduling)
+
+{
+  echo "nav:"
+  for name in "${order[@]}"; do
+    echo "  - $name"
+  done
+  echo "  - ..."
+} > docs/sources/.pages
+
+# Landing page for the "Modules" tab itself — without this, navigation.indexes
+# has nothing to link the section header to, and the tab 404s.
+{
+  echo "---"
+  echo "author: parrothacker1"
+  echo "updated: $(date -u +%F)"
+  echo "---"
+  echo
+  echo "# Modules"
+  echo
+  echo "One repo per module, pulled in as a submodule."
+  echo
+  for name in "${order[@]}"; do
+    [ -d "docs/sources/$name" ] || continue
+    title="$(grep -m1 '^# ' "docs/sources/$name/index.md" 2>/dev/null | sed 's/^# //')"
+    echo "- [${title:-$name}]($name/index.md)"
+  done
+  for dir in docs/sources/*/; do
+    name="$(basename "$dir")"
+    if ! printf '%s\n' "${order[@]}" | grep -qx "$name"; then
+      title="$(grep -m1 '^# ' "$dir/index.md" 2>/dev/null | sed 's/^# //')"
+      echo "- [${title:-$name}]($name/index.md)"
+    fi
+  done
+} > docs/sources/index.md
