@@ -19,10 +19,17 @@
   --md-accent-fg-color--transparent: #c9722c1a;
   --md-accent-bg-color: #fff;
   --md-accent-bg-color--light: #ffffffb3;
+  /* Material derives link + active-nav-item color from --md-typeset-a-color,
+     which defaults to --md-primary-fg-color. Ours is near-black, so the
+     active sidebar item was rendering black-on-black. Point it at the
+     accent instead — visible, and matches the hover color already used. */
+  --md-typeset-a-color: var(--md-accent-fg-color);
 }
 
-[data-md-color-scheme="slate"] .md-typeset a {
-  color: #e08a3e;
+/* The prev/next footer nav is a fixed near-black bar unrelated to the
+   brand palette — simpler to drop it than fight its styling. */
+.md-footer {
+  display: none !important;
 }
 
 .md-typeset h1,
