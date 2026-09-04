@@ -1,0 +1,16 @@
+[submodule "projects/kraft-boot-bringup"]
+	path = projects/kraft-boot-bringup
+	url = https://github.com/KernelKraftVITC/kraft-boot-bringup.git
+	branch = main
+[submodule "projects/kraft-memory-management"]
+	path = projects/kraft-memory-management
+	url = https://github.com/KernelKraftVITC/kraft-memory-management.git
+	branch = main
+[submodule "projects/kraft-kernel-module-loader"]
+	path = projects/kraft-kernel-module-loader
+	url = https://github.com/KernelKraftVITC/kraft-kernel-module-loader.git
+	branch = main
+[submodule "projects/kraft-process-scheduling"]
+	path = projects/kraft-process-scheduling
+	url = https://github.com/KernelKraftVITC/kraft-process-scheduling.git
+	branch = main
