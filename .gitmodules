@@ -1,7 +1,3 @@
-[submodule "projects/docs-test-module"]
-	path = projects/docs-test-module
-	url = https://github.com/KernelKraftVITC/docs-test-module.git
-	branch = main
 [submodule "projects/kraft-process-scheduling"]
 	path = projects/kraft-process-scheduling
 	url = https://github.com/KernelKraftVITC/kraft-process-scheduling.git

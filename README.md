@@ -1,30 +1,22 @@
-# KraftOS Docs
+# KraftOS
 
-Documentation hub for all KernelKraftVITC projects. Built with
-[Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) (the same
-engine FastAPI's docs run on).
+Integration branch for the KraftOS kernel. Each module lives in its own
+repo, wired in here as a git submodule once its owner opens a PR adding it —
+this branch is where the modules come together into the actual OS build.
 
-## How it works
+Docs are handled entirely on the [`pages`](../../tree/pages) branch — see
+that branch's README, or the published site, for module specs, the team
+roadmap, and how to write/add docs. `main` doesn't build or serve docs at
+all; it's purely for source integration.
 
-Each project lives here as a git submodule and owns a `docs/` folder of
-markdown. `scripts/sync-docs.sh` symlinks every submodule's `docs/` into
-`docs/sources/<name>`, then `mkdocs build` turns the combined tree into a
-static site.
+## Adding your module here
 
-A weekly GitHub Actions workflow (`.github/workflows/docs.yml`) pulls the
-latest commit from every submodule, rebuilds the site, and deploys it to
-GitHub Pages as a build artifact — no `gh-pages` branch, nothing committed
-by hand.
-
-## Add a project
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) — it's a PR-based workflow, since
-`main` is protected.
-
-## Local preview
+Open a PR against `main` adding your repo as a submodule under `projects/`:
 
 ```sh
-pip install -r requirements.txt
-./scripts/sync-docs.sh
-mkdocs serve
+git checkout -b add-<your-project-name>
+git submodule add -b main <your-repo-url> projects/<your-project-name>
+git push origin add-<your-project-name>
 ```
+
+Then open the PR. `main` is protected — nobody pushes to it directly.
